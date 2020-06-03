@@ -121,9 +121,32 @@ function load() {
   // console.log("loaded")
 }
 
+// dblclick
+
 const footer = document.querySelector("footer");
 console.log(footer);
 footer.addEventListener("dblclick", function () {
   footer.style.backgroundColor = "#17A2B8";
   console.log("I'm here");
 });
+
+// click
+
+const buttons = document.querySelectorAll('.btn');
+console.log("btns", buttons)
+
+
+
+buttons.forEach(button => {
+  console.log("foreach worked")
+  button.addEventListener('click', () => {
+    button.textContent = "You Clicked";
+    console.log("it worked")
+  });
+});
+
+// 
+
+
+
+
