@@ -24,7 +24,9 @@ mainNav.addEventListener("mouseover", function( event ) {
     }, 500);
   }, false);
 
-  //keydown
+
+
+  //wheel
 const welcomeImg = document.getElementById("welcome-image");
 
 let scale = 1;
@@ -46,6 +48,55 @@ welcomeImg.addEventListener("mouseleave", event => {
     event.target.style.transform = "scale(1)";
   });
 
+  // keydown
 
 
+// let buttons = document.getElementsByClassName("btn");
+// console.log("deese dem buttons", buttons);
+// function clickOnSpace(event) {
+//       // event.preventDefault()
+//       console.log("You have pushed a key");
+//       if (event.keyCode === 229) {
+//           event.target.style.backgroundColor = "#C0C0C0";
+//       };
+//   };
 
+// for (i = 0; i < buttons.length; i++) {
+//     buttons[i].addEventListener("keydown", clickOnSpace);
+//     console.log(buttons[i]);
+// }
+
+
+// mainNav.addEventListener("keypress", clickOnSpace);
+
+//   buttons.addEventListener('keydown', clickOnSpace);
+
+addEventListener("keydown", function(event) {
+    if (event.keyCode == 86)
+      document.body.style.background = "#C0C0C0";
+  });
+  addEventListener("keyup", function(event) {
+    if (event.keyCode == 86)
+      document.body.style.background = "";
+  });
+
+
+// dragover
+
+const box = document.getElementsByClassName('text-content')[0]
+const containers = document.getElementsByClassName('holder')
+for(const container of containers) {
+  container.addEventListener("dragover", dragover)
+  container.addEventListener("dragenter", dragenter)
+  container.addEventListener("drop", drop)
+}
+
+function dragover(e) {
+  e.preventDefault()
+}
+function dragenter(e) {
+  e.preventDefault()
+}
+function drop() {
+  this.append(box)
+}
