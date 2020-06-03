@@ -84,12 +84,10 @@ addEventListener("keydown", function(event) {
 // dragover
 
 const box = document.getElementsByClassName('text-content')[0]
-const containers = document.getElementsByClassName('holder')
-for(const container of containers) {
-  container.addEventListener("dragover", dragover)
-  container.addEventListener("dragenter", dragenter)
-  container.addEventListener("drop", drop)
-}
+const containers = document.getElementsByClassName('img-content')[0]
+containers.addEventListener("dragover", dragover)
+containers.addEventListener("dragenter", dragenter)
+containers.addEventListener("drop", drop)
 
 function dragover(e) {
   e.preventDefault()
@@ -97,6 +95,35 @@ function dragover(e) {
 function dragenter(e) {
   e.preventDefault()
 }
-function drop() {
-  this.append(box)
+function drop(e) {
+  e.stopPropagation()
+  e.target.append(box)
 }
+
+const body = document.querySelector("body");
+body.addEventListener("dragover", dragover);
+body.addEventListener("dragenter", dragenter);
+body.addEventListener("drop", dropReset);
+
+const contentSection = document.getElementsByClassName("content-section")[0];
+
+function dropReset() {
+  contentSection.prepend(box);
+}
+
+// load
+
+const object = document.getElementsByClassName("content-destination")[0];
+addEventListener("load", load);
+
+function load() {
+  object.style.color = "#C0C0C0";
+  // console.log("loaded")
+}
+
+const footer = document.querySelector("footer");
+console.log(footer);
+footer.addEventListener("dblclick", function () {
+  footer.style.backgroundColor = "#17A2B8";
+  console.log("I'm here");
+});
